@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Single Page Application med ren JavaScript | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="React.js, Vue.js og Angular.js er alle tre meget populære biblioteker der bliver brugt til blandt andet at bygge Single Page Applications (SPAs). I dette indlæg vil jeg vise dig, hvordan du selv kan l">
+<meta name="keywords" content="JavaScript,SPA,gulp,templates,router">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Single Page Application med ren JavaScript">
+<meta property="og:url" content="https://brianemilius.github.io/2018/04/16/Single-Page-Application-med-ren-JavaScript/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="React.js, Vue.js og Angular.js er alle tre meget populære biblioteker der bliver brugt til blandt andet at bygge Single Page Applications (SPAs). I dette indlæg vil jeg vise dig, hvordan du selv kan l">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-21T16:07:03.271Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Single Page Application med ren JavaScript">
+<meta name="twitter:description" content="React.js, Vue.js og Angular.js er alle tre meget populære biblioteker der bliver brugt til blandt andet at bygge Single Page Applications (SPAs). I dette indlæg vil jeg vise dig, hvordan du selv kan l">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://brianemilius.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Single-Page-Application-med-ren-JavaScript" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/16/Single-Page-Application-med-ren-JavaScript/" class="article-date">
+  <time datetime="2018-04-16T14:34:43.000Z" itemprop="datePublished">2018-04-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Guides/">Guides</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Single Page Application med ren JavaScript
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>React.js, Vue.js og Angular.js er alle tre meget populære biblioteker der bliver brugt til blandt andet at bygge Single Page Applications (SPAs). I dette indlæg vil jeg vise dig, hvordan du selv kan lave et lille bibliotek, der gør mange af de samme grundlæggende ting, som for eksempel Angular.js.</strong></p>
+<p>Dette er første del af guiden om Ren JavaScript SPAs.</p>
+<a id="more"></a>
+<p>Vi skal bruge 2 filer: index.html og main.js</p>
+<p>Derudover skal vi sørge for, at alle requests til vores applikation bliver henvist til index.html. Jeg bruger npm-pakken <code>browser-sync</code> sammen med gulp til dette, når jeg udvikler. Du kan også bruge URL-rewriting med Apache.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">const</span> browserSync = <span class="built_in">require</span>(<span class="string">'browser-sync'</span>).create();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Dette er min gulp-task, hvor jeg også sørger for at der er adgang til filer i /assets og /templates</span></span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'browser-sync'</span>, () =&gt; &#123;</span><br><span class="line">	browserSync.init(&#123;</span><br><span class="line">		<span class="string">'server'</span>: &#123;</span><br><span class="line">			<span class="string">'baseDir'</span>: <span class="string">'dist'</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="string">'middleware'</span>: <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">			<span class="keyword">if</span> (req.url.indexOf(<span class="string">'/assets'</span>) === <span class="number">-1</span> &amp;&amp; req.url.indexOf(<span class="string">'/templates'</span>) === <span class="number">-1</span>)</span><br><span class="line">				req.url = <span class="string">'/index.html'</span>;</span><br><span class="line">			<span class="keyword">return</span> next();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Min applikationsstruktur ser således ud:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">App</span><br><span class="line">|  gulpfile.js</span><br><span class="line">|</span><br><span class="line">└───dist</span><br><span class="line">|   | index.html</span><br><span class="line">|   |</span><br><span class="line">|   └─assets</span><br><span class="line">|   | |</span><br><span class="line">|   | └─scripts</span><br><span class="line">|   |     main.js</span><br><span class="line">|   |</span><br><span class="line">|   └─templates</span><br><span class="line">|     | ... template filer</span><br><span class="line">|     |</span><br></pre></td></tr></table></figure></p>
+<h2 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h2><p>index.html er en simpel skabelon, en skal uden indhold. Det eneste vi behøver til at starte med, er et <code>main</code>-tag. Vi skal også indlæse main.js.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"da"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Ren JavaScript SPA<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">main</span>&gt;</span><span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/assets/scripts/main.js"</span> <span class="attr">defer</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Router"><a href="#Router" class="headerlink" title="Router"></a>Router</h2><p>En af hovedfunktionaliteterne i en SPA er <code>routeren</code>. En router skal indlæse skabeloner i vores DOM ud fra hvad der står i vores adressebar.</p>
+<p>Det første vi gør, at at lave en constructor for routeren.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Router = <span class="function"><span class="keyword">function</span> (<span class="params">name, routes</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.name = name;</span><br><span class="line">	<span class="keyword">this</span>.routes = routes;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Til at begynde med skal vi instansiere <code>Router</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Router(<span class="string">'myRouter'</span>, [</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">'path'</span>: <span class="string">'/'</span>,</span><br><span class="line">		<span class="string">'name'</span>: <span class="string">'Home'</span>,</span><br><span class="line">		<span class="string">'template'</span>: <span class="string">'home'</span></span><br><span class="line">	&#125;, &#123;</span><br><span class="line">		<span class="string">'path'</span>: <span class="string">'/about'</span>,</span><br><span class="line">		<span class="string">'name'</span>: <span class="string">'About'</span>,</span><br><span class="line">		<span class="string">'template'</span>: <span class="string">'about'</span></span><br><span class="line">	&#125;, &#123;</span><br><span class="line">		<span class="string">'path'</span>: <span class="string">'/contact'</span>,</span><br><span class="line">		<span class="string">'name'</span>: <span class="string">'Contact'</span>,</span><br><span class="line">		<span class="string">'template'</span>: <span class="string">'contact'</span></span><br><span class="line">	&#125;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+<p>Lad os lave en metode, der styrer vores routes:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Router.prototype.get = <span class="function"><span class="keyword">function</span> (<span class="params">path</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// tjek om 'path' findes i vores definerede route</span></span><br><span class="line">	<span class="keyword">const</span> route = <span class="keyword">this</span>.routes.filter(<span class="function"><span class="params">r</span> =&gt;</span> r.path === path)[<span class="number">0</span>];</span><br><span class="line">	<span class="built_in">console</span>.log(route);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>… og en metode, der loader indholdet:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> render = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params">templateName, callback</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> view = <span class="built_in">document</span>.getElementByTagName(<span class="string">'main'</span>)[<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">const</span> template = <span class="keyword">await</span> fetch(<span class="string">`/templates/<span class="subst">$&#123;templateName&#125;</span>.html`</span>);</span><br><span class="line">	view.innerHTML = <span class="keyword">await</span> template.text();</span><br><span class="line">	callback();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>render-funktionen er en asynkron funktion, der indeholder et callback. Dette er så vi kan sørge for at vores template bliver indlæst inden vi gør mere.</p>
+<p>For at bruge <code>render()</code> skal vi udvide <code>get</code>-metoden:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Router.prototype.get = <span class="function"><span class="keyword">function</span> (<span class="params">path</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// tjek om 'path' findes i vores definerede route</span></span><br><span class="line">	<span class="keyword">const</span> route = <span class="keyword">this</span>.routes.filter(<span class="function"><span class="params">r</span> =&gt;</span> r.path === path)[<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">if</span> (route) render(route.template, () =&gt; &#123;</span><br><span class="line">		<span class="comment">// her kan vi udføre andre handlinger efter indlæsning af template</span></span><br><span class="line">	&#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Dette er første del af denne guide. Anden del kommer til at handle om, hvordan vi får sat routeren i gang med at arbejde og hvordan vi kan lave links, som virker med en SPA.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://brianemilius.github.io/2018/04/16/Single-Page-Application-med-ren-JavaScript/" data-id="cjr82ky5k0009kdjs7o7xsape" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SPA/">SPA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/router/">router</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/templates/">templates</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/04/17/Optimer-din-hjemmeside/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Optimer din hjemmeside
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/10/Dynamisk-font-storrelse/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Dynamisk font-størrelse</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Accessability/">Accessability</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Guides/">Guides</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kryptografi/">Kryptografi</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Kryptografi/Block-Chain/">Block Chain</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Renere-kode/">Renere kode</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Photoshop/">Photoshop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPA/">SPA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typografi/">Typografi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UX/">UX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/a11y/">a11y</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel-js/">babel.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/best-practice/">best-practice</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/block-chain/">block chain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crypto-currency/">crypto currency</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dokumentation/">dokumentation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-modules/">es6 modules</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash/">hash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hmac/">hmac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matematik/">matematik</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/optimering/">optimering</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/router/">router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sha/">sha</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/templates/">templates</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 16.67px;">CSS</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Photoshop/" style="font-size: 10px;">Photoshop</a> <a href="/tags/SPA/" style="font-size: 10px;">SPA</a> <a href="/tags/Typografi/" style="font-size: 10px;">Typografi</a> <a href="/tags/UX/" style="font-size: 10px;">UX</a> <a href="/tags/a11y/" style="font-size: 10px;">a11y</a> <a href="/tags/babel-js/" style="font-size: 10px;">babel.js</a> <a href="/tags/best-practice/" style="font-size: 13.33px;">best-practice</a> <a href="/tags/block-chain/" style="font-size: 10px;">block chain</a> <a href="/tags/crypto-currency/" style="font-size: 10px;">crypto currency</a> <a href="/tags/dokumentation/" style="font-size: 10px;">dokumentation</a> <a href="/tags/es6-modules/" style="font-size: 10px;">es6 modules</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hash/" style="font-size: 10px;">hash</a> <a href="/tags/hmac/" style="font-size: 10px;">hmac</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/matematik/" style="font-size: 10px;">matematik</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/optimering/" style="font-size: 10px;">optimering</a> <a href="/tags/router/" style="font-size: 10px;">router</a> <a href="/tags/sha/" style="font-size: 10px;">sha</a> <a href="/tags/templates/" style="font-size: 10px;">templates</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/09/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/10/moderne-javascript-i-dag/">Moderne javascript i dag</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/01/target-quote-blank-quote/">target=&amp;quot;_blank&amp;quot;</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/17/Optimer-din-hjemmeside/">Optimer din hjemmeside</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/16/Single-Page-Application-med-ren-JavaScript/">Single Page Application med ren JavaScript</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
