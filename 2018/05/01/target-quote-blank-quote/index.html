@@ -1,99 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="da">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  
-  <title>target=&#34;_blank&#34; | brian emilius . com</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Meget kan siges om links, der åbner et nyt vindue eller faneblad. Hvor vidt det er en god idé eller best practice at gøre sådan er ikke det denne artikel handler om. Derimod vil jeg rigtig gerne disku">
-<meta name="keywords" content="best-practice,UX,a11y,html">
-<meta property="og:type" content="article">
-<meta property="og:title" content="target=&quot;_blank&quot;">
-<meta property="og:url" content="https://brianemilius.com/2018/05/01/target-quote-blank-quote/index.html">
-<meta property="og:site_name" content="brian emilius . com">
-<meta property="og:description" content="Meget kan siges om links, der åbner et nyt vindue eller faneblad. Hvor vidt det er en god idé eller best practice at gøre sådan er ikke det denne artikel handler om. Derimod vil jeg rigtig gerne disku">
-<meta property="og:locale" content="da">
-<meta property="og:image" content="https://brianemilius.com/2018/05/01/target-quote-blank-quote/external-link.jpg">
-<meta property="og:updated_time" content="2019-01-31T07:52:49.439Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="target=&quot;_blank&quot;">
-<meta name="twitter:description" content="Meget kan siges om links, der åbner et nyt vindue eller faneblad. Hvor vidt det er en god idé eller best practice at gøre sådan er ikke det denne artikel handler om. Derimod vil jeg rigtig gerne disku">
-<meta name="twitter:image" content="https://brianemilius.com/2018/05/01/target-quote-blank-quote/external-link.jpg">
-  
-    <link rel="alternate" href="/atom.xml" title="brian emilius . com" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+	<meta name="author" content="Brian Emilius">
+	<meta name="description" content="Meget kan siges om links, der åbner et nyt vindue eller faneblad. Hvor vidt det er en god idé eller best practice at gøre sådan er ikke det denne artikel handler om. Derimod vil jeg rigtig gerne diskutere, hvad vi kan gøre i de tilfælde, hvor det alligevel er nødvendigt at åbne et nyt vindue eller faneblad.
+Du kender helt sikkert denne form for link:
+&amp;lt;a href=&#34;http://hjemmeside.dk/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&amp;gt;En hjemmeside&amp;lt;/a&amp;gt;
+Når du klikker på et sådant link, vil linkets sti blive åbnet i et nyt vindue eller et nyt faneblad, alt afhængig af, hvordan den enkelte browser er indstillet. I dag er de fleste browsere indstillet til at åbne et faneblad.
+Fordi vi allerhelst gerne vil lade linkets opførsel være op til den enkelte bruger, kan det være irriterende, hvis et link ikke opfører sig sådan som brugeren forventer. Hvis brugeren for eksempel forventer at det link hun klikker på, åbner i samme faneblad og der sker noget helt anden, giver det anledning til frustration, irritation, og i værste tilfælde, at brugeren holder op med at benytte vores app eller site.">
+	<!-- The Open Graph protocol -->
+	<meta property="og:url" content="https://brianemilius.com/2018/05/01/target-quote-blank-quote/">
+	<meta property="og:type" content="blog">
+	<meta property="og:title" content="target=&#34;_blank&#34;">
+	<meta property="og:description" content="Meget kan siges om links, der åbner et nyt vindue eller faneblad. Hvor vidt det er en god idé eller best practice at gøre sådan er ikke det denne artikel handler om. Derimod vil jeg rigtig gerne diskutere, hvad vi kan gøre i de tilfælde, hvor det alligevel er nødvendigt at åbne et nyt vindue eller faneblad.
+Du kender helt sikkert denne form for link:
+&amp;lt;a href=&#34;http://hjemmeside.dk/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&amp;gt;En hjemmeside&amp;lt;/a&amp;gt;
+Når du klikker på et sådant link, vil linkets sti blive åbnet i et nyt vindue eller et nyt faneblad, alt afhængig af, hvordan den enkelte browser er indstillet. I dag er de fleste browsere indstillet til at åbne et faneblad.
+Fordi vi allerhelst gerne vil lade linkets opførsel være op til den enkelte bruger, kan det være irriterende, hvis et link ikke opfører sig sådan som brugeren forventer. Hvis brugeren for eksempel forventer at det link hun klikker på, åbner i samme faneblad og der sker noget helt anden, giver det anledning til frustration, irritation, og i værste tilfælde, at brugeren holder op med at benytte vores app eller site.">
+	<meta property="og:image" content="https://brianemilius.com/2018/05/01/target-quote-blank-quote/external-link.jpg">
+	<meta property="og:article:tag" content="best-practice"> <meta property="og:article:tag" content="UX"> <meta property="og:article:tag" content="a11y"> <meta property="og:article:tag" content="html"> 
+	
+	
+	<meta property="article:published_time" content="Tue May 01 2018 22:01:16 GMT+0200">
+	<meta property="article:modified_time" content="Thu Jan 31 2019 08:52:49 GMT+0100">
+	
+		
+	<!-- The Twitter Card protocol -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@KodeBlokDK">
+	<meta name="twitter:creator" content="@brianemilius">
+
+	
+	<title>target=&#34;_blank&#34; - brian emilius . com</title>
+
+	<link rel="manifest" href="/manifest.json">
+
+	<link rel="icon" href="/images/icons/icon-152x152.png">
+	<meta name="theme-color" content="#262626">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+	<meta name="apple-mobile-web-app-title" content="Alex Jover Blog">
+	<link rel="apple-touch-icon" href="/images/icons/icon-152x152.png">
+
+	<meta name="msapplication-TileImage" content="/images/icons/icon-152x152.png">
+	<meta name="msapplication-TileColor" content="#000000">
+	<!--<link rel="stylesheet" href="/stylesheets/critical.css?__inline=true">-->
 </head>
-</html>
+ 
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">brian emilius . com</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://brianemilius.com"></form>
-      </div>
-    </div>
-  </div>
+  <div class="siteWrapper">
+		<div class="overlay" hidden></div>
+<div class="gdpr" hidden>
+	<h1>Kære besøgende</h1>
+	<p><strong>Ja, dette er endnu en GDPR oplysning.</strong></p>
+	<p>Her på kodeblok.dk samler vi absolut ingen data om dig. Men vi gør brug af et kommentar-modul, som bliver leveret af <a href="https://help.disqus.com/terms-and-policies/disqus-privacy-policy" target="_blank">Disqus</a>.</p>
+	<p>Disqus sporer og gemmer data om dig. Derfor vil vi på kodeblok.dk give dig muligheden for at vælge, om du vil tillade dette. Dit valg bliver gemt i din egen browser og du kan altid lave dit valg om ved at åbne vores <a href="/Privatliv">privatlivspolitik</a>.</p>
+	<input type="checkbox" name="disqus" value="yes" id="input_disqus">
+	<label for="input_disqus">Ja tak! Jeg tillader at Disqus sporer og gemmer data om mig via kodeblok.dk</label>
+	<button id="gdpr_save">Gem</button>
+</div>
+
+  	<header class="siteHeader">
+	<a href="/">brian emilius . com</a>
+	<span></span>
 </header>
-      <div class="outer">
-        <section id="main"><article id="post-target-quote-blank-quote" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/01/target-quote-blank-quote/" class="article-date">
-  <time datetime="2018-05-01T20:01:16.000Z" itemprop="datePublished">1. maj 2018</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/kategorier/Accessability/">Accessability</a>
-  </div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      target=&#34;_blank&#34;
-    </h1>
-  
+    <nav class="primaryNavigation">
+	<ul>
+		
+		<li><a href="/">Hjem</a></li>
+		
+		<li><a href="/Missionen">Missionen</a></li>
+		
+		<li><a href="/arkiver">Arkiver</a></li>
+		
+	</ul>
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Meget kan siges om links, der åbner et nyt vindue eller faneblad. Hvor vidt det er en god idé eller best practice at gøre sådan er ikke det denne artikel handler om. Derimod vil jeg rigtig gerne diskutere, hvad vi kan gøre i de tilfælde, hvor det alligevel er nødvendigt at åbne et nyt vindue eller faneblad.</p>
+  	<main>
+	  	<section>
+	<article class="articleFull">
+	<header class="articleHeader">
+		<!-- Title -->
+		<h1>target="_blank"</h1>
+		
+		<!-- Date and Author -->
+		<p>1. May 2018</p>
+		<p> af Brian Emilius</p>
+		
+	</header>
+	<div class="content">
+		<!-- Content -->
+		<p>Meget kan siges om links, der åbner et nyt vindue eller faneblad. Hvor vidt det er en god idé eller best practice at gøre sådan er ikke det denne artikel handler om. Derimod vil jeg rigtig gerne diskutere, hvad vi kan gøre i de tilfælde, hvor det alligevel er nødvendigt at åbne et nyt vindue eller faneblad.</p>
 <p>Du kender helt sikkert denne form for link:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://hjemmeside.dk/index.html"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">rel</span>=<span class="string">"noopener"</span>&gt;</span>En hjemmeside<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>Når du klikker på et sådant link, vil linkets sti blive åbnet i et nyt vindue eller et nyt faneblad, alt afhængig af, hvordan den enkelte browser er indstillet. I dag er de fleste browsere indstillet til at åbne et faneblad.</p>
@@ -120,147 +122,112 @@
 <p>Skærmoplæsere vil læse ovenstående link som “Link: En hjemmeside [kort pause] Åbner en ekstern side i et nyt vindue”.</p>
 <p>Hvad mener du om denne metode? Jeg kunne rigtig godt tænke mig at få dit input om brugeroplevelsen i forbindelse med eksterne links i kommentarsektionen herunder.</p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://brianemilius.com/2018/05/01/target-quote-blank-quote/" data-id="cjrkcing8000g95jstaka9hgp" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UX/">UX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/a11y/">a11y</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/best-practice/">best-practice</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
+	</div>
+	
+	<footer>
+		<!-- Tags and Categories links -->
+		
+	
+	<div class="blog-tags-container">
+			<span class="glyphicon glyphicon-tags"></span>
+			<a href="/tags/best-practice/">#best-practice</a> <a href="/tags/UX/">#UX</a> <a href="/tags/a11y/">#a11y</a> <a href="/tags/html/">#html</a>
+	</div>
+	
+		Dette indlæg er offentliggjort i 
+	
+	<a href="/kategorier/Accessability/">Accessability</a>
 
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/08/10/moderne-javascript-i-dag/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Moderne javascript i dag
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/04/17/Optimer-din-hjemmeside/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Optimer din hjemmeside</div>
-    </a>
-  
-</nav>
-
-  
+	</footer>
+	
 </article>
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/kategorier/Accessability/">Accessability</a></li><li class="category-list-item"><a class="category-list-link" href="/kategorier/Design/">Design</a></li><li class="category-list-item"><a class="category-list-link" href="/kategorier/Guides/">Guides</a></li><li class="category-list-item"><a class="category-list-link" href="/kategorier/Kryptografi/">Kryptografi</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/kategorier/Kryptografi/Block-Chain/">Block Chain</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/kategorier/Renere-kode/">Renere kode</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Photoshop/">Photoshop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPA/">SPA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typografi/">Typografi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UX/">UX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/a11y/">a11y</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel-js/">babel.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/best-practice/">best-practice</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/block-chain/">block chain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crypto-currency/">crypto currency</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dokumentation/">dokumentation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-modules/">es6 modules</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash/">hash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hmac/">hmac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matematik/">matematik</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/optimering/">optimering</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/router/">router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sha/">sha</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/templates/">templates</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 16.67px;">CSS</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Photoshop/" style="font-size: 10px;">Photoshop</a> <a href="/tags/SPA/" style="font-size: 10px;">SPA</a> <a href="/tags/Typografi/" style="font-size: 10px;">Typografi</a> <a href="/tags/UX/" style="font-size: 10px;">UX</a> <a href="/tags/a11y/" style="font-size: 10px;">a11y</a> <a href="/tags/babel-js/" style="font-size: 10px;">babel.js</a> <a href="/tags/best-practice/" style="font-size: 13.33px;">best-practice</a> <a href="/tags/block-chain/" style="font-size: 10px;">block chain</a> <a href="/tags/crypto-currency/" style="font-size: 10px;">crypto currency</a> <a href="/tags/dokumentation/" style="font-size: 10px;">dokumentation</a> <a href="/tags/es6-modules/" style="font-size: 10px;">es6 modules</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hash/" style="font-size: 10px;">hash</a> <a href="/tags/hmac/" style="font-size: 10px;">hmac</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/matematik/" style="font-size: 10px;">matematik</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/optimering/" style="font-size: 10px;">optimering</a> <a href="/tags/router/" style="font-size: 10px;">router</a> <a href="/tags/sha/" style="font-size: 10px;">sha</a> <a href="/tags/templates/" style="font-size: 10px;">templates</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/arkiver/2018/08/">august 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/arkiver/2018/05/">maj 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/arkiver/2018/04/">april 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/arkiver/2018/01/">januar 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/arkiver/2017/12/">december 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/arkiver/2015/12/">december 2015</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/08/10/moderne-javascript-i-dag/">Moderne javascript i dag</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/01/target-quote-blank-quote/">target=&#34;_blank&#34;</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/17/Optimer-din-hjemmeside/">Optimer din hjemmeside</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/16/Single-Page-Application-med-ren-JavaScript/">Single Page Application med ren JavaScript</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/10/Dynamisk-font-storrelse/">Dynamisk font-størrelse</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
+<aside>
+	<div id="disqus_thread"></div>
 </aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 Brian Emilius<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
+
+<script>
+
+	/**
+	*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+	/*
+	var disqus_config = function () {
+	this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+	this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	};
+	*/
+	const disqusOptIn = localStorage.getItem('disqusOptIn');
+	console.log(disqusOptIn);
+	if (disqusOptIn) {
+		(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = 'https://brianeemilius.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+		})();
+	}
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	
+</section>
+	  </main>
+
+	  <div class="widgets">
+	<div class="searchForm">
+		<form>
+			<h4><label for="search">Søg</label></h4>
+			<input type="search" id="search" name="search" placeholder="skriv din søgetekst her...">
+			<div class="ajaxSearchResults"></div>
+		</form>
+	</div>
+
+	<div class="contribute">
+		<h4>Bliv en del af kodeblok.dk</h4>
+		<div>
+			<p>Kunne du tænke dig at skrive for kodeblok.dk?</p>
+			<p>Vi har brug for udviklere, der gerne vil bidrage.</p>
+			<p><a href="">Læs mere</a></p>
+		</div>
+	</div>
+			
+
+	<div class="categories">
+		<h4>Kategorier</h4>
+		<div>
+			<ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/kategorier/Accessability/">Accessability</a></li><li class="category-list-item"><a class="category-list-link" href="/kategorier/Design/">Design</a></li><li class="category-list-item"><a class="category-list-link" href="/kategorier/Guides/">Guides</a></li><li class="category-list-item"><a class="category-list-link" href="/kategorier/Kryptografi/">Kryptografi</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/kategorier/Kryptografi/Block-Chain/">Block Chain</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/kategorier/Renere-kode/">Renere kode</a></li></ul>
+		</div>
+	</div>
+
+
+
+	<div class="tags">
+		<h4>Tags</h4>
+		<div>
+			<a href="/tags/CSS/" style="font-size: 16.67px;">CSS</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Photoshop/" style="font-size: 10px;">Photoshop</a> <a href="/tags/SPA/" style="font-size: 10px;">SPA</a> <a href="/tags/Typografi/" style="font-size: 10px;">Typografi</a> <a href="/tags/UX/" style="font-size: 10px;">UX</a> <a href="/tags/a11y/" style="font-size: 10px;">a11y</a> <a href="/tags/babel-js/" style="font-size: 10px;">babel.js</a> <a href="/tags/best-practice/" style="font-size: 13.33px;">best-practice</a> <a href="/tags/block-chain/" style="font-size: 10px;">block chain</a> <a href="/tags/crypto-currency/" style="font-size: 10px;">crypto currency</a> <a href="/tags/dokumentation/" style="font-size: 10px;">dokumentation</a> <a href="/tags/es6-modules/" style="font-size: 10px;">es6 modules</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hash/" style="font-size: 10px;">hash</a> <a href="/tags/hmac/" style="font-size: 10px;">hmac</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/matematik/" style="font-size: 10px;">matematik</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/optimering/" style="font-size: 10px;">optimering</a> <a href="/tags/router/" style="font-size: 10px;">router</a> <a href="/tags/sha/" style="font-size: 10px;">sha</a> <a href="/tags/templates/" style="font-size: 10px;">templates</a>
+		</div>
+	</div>
+
+
+</div>
+
+	
+		<footer class="siteFooter">
+	<p>Ophavsret &copy; 2015-2019 brianemilius.com. Alle rettigheder forbeholdes. <a href="/Privatliv">Privatliv</a></p>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
   </div>
+	<script src="/javascripts/main.js"></script>
+<script src="/javascripts/register-sw.js"></script>
+<script>
+	const cssLoader = function (src) {
+		const stylesheet = document.createElement('link');
+		stylesheet.href = src;
+		stylesheet.rel = 'stylesheet';
+		stylesheet.type = 'text/css';
+		document.getElementsByTagName('head')[0].appendChild(stylesheet);
+	};
+	document.addEventListener('DOMContentLoaded', () => {
+		cssLoader('/stylesheets/style.css');
+	});
+</script>
 </body>
 </html>
