@@ -5,22 +5,22 @@
   
 
   
-  <title>Moderne javascript i dag | Hexo</title>
+  <title>Moderne javascript i dag | brian emilius . com</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="JavaScript er et sprog der flytter og udvikler sig helt vildt hurtigt. Bare indenfor de sidste få år er der kommet custom components og ES6 moduler med import og export. Det kan som udvikler være svær">
 <meta name="keywords" content="babel.js,node.js,es6 modules">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Moderne javascript i dag">
 <meta property="og:url" content="https://brianemilius.com/2018/08/10/moderne-javascript-i-dag/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="brian emilius . com">
 <meta property="og:description" content="JavaScript er et sprog der flytter og udvikler sig helt vildt hurtigt. Bare indenfor de sidste få år er der kommet custom components og ES6 moduler med import og export. Det kan som udvikler være svær">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="da">
 <meta property="og:updated_time" content="2018-08-10T08:38:20.780Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Moderne javascript i dag">
 <meta name="twitter:description" content="JavaScript er et sprog der flytter og udvikler sig helt vildt hurtigt. Bare indenfor de sidste få år er der kommet custom components og ES6 moduler med import og export. Det kan som udvikler være svær">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="brian emilius . com" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -39,7 +39,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">brian emilius . com</a>
       </h1>
       
     </div>
@@ -68,11 +68,11 @@
         <section id="main"><article id="post-moderne-javascript-i-dag" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/10/moderne-javascript-i-dag/" class="article-date">
-  <time datetime="2018-08-10T07:12:15.000Z" itemprop="datePublished">2018-08-10</time>
+  <time datetime="2018-08-10T07:12:15.000Z" itemprop="datePublished">10. august 2018</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Guides/">Guides</a>
+    <a class="article-category-link" href="/kategorier/Guides/">Guides</a>
   </div>
 
   </div>
@@ -98,8 +98,8 @@
 <p>Det findes masser af måder at komme igang med de ny moderne teknologier, og samtidig sikre at applikationerne kan køre på platforme, der endnu ikke helt understøtter teknologierne.</p>
 <p>Et godt eksempel på dette er ES6 moduler og Node.js.</p>
 <p>I dag med Node.js version 10.8.0 er det ikke muligt at benytte sig af følgende syntaks.</p>
-<p><code>module.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">'Hello, World!'</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p><code>app.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; foo &#125; <span class="keyword">from</span> <span class="string">'./module'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(foo());</span><br></pre></td></tr></table></figure></p>
+<p><code>module.js</code><br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'Hello, World!'</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p><code>app.js</code><br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; foo &#125; <span class="keyword">from</span> <span class="string">'./module'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(foo());</span><br></pre></td></tr></table></figure></p>
 <p>Men med lidt hjælp fra et bibliotek, der hedder <code>Babel.js</code> kan vi transpilere vores moderne JavaScript, således at det er kompatibelt med alle ældre versioner.</p>
 <h2 id="Babel-js"><a href="#Babel-js" class="headerlink" title="Babel.js"></a>Babel.js</h2><p>Babel.js er et bibliotek, som kan transpilere alle mulige forskellige sprog om til almindeligt kompatible versioner. For eksempel kan Babel.js transpilere SASS eller LESS om til CSS og håndtere vendor-prefixes, så det færdige dokument er kompatibelt helt tilbage til Internet Explorer 6.</p>
 <p>Fordelen ved dette er, at vi kan skrive vores kode og gøre brug af cutting edge teknologier og features uden at tænke på, om det er kompatibelt med den platform vi vil køre vores applikationer på.</p>
@@ -113,16 +113,16 @@
 <li>babel-preset-stage-3</li>
 <li>babel-register</li>
 </ul>
-<p>Du kan installere pakkerne i dit projekt med følgende kommando<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save-dev babel-cli babel-core babel-preset-es2015-node5 babel-preset-stage-3 babel-register</span><br></pre></td></tr></table></figure></p>
+<p>Du kan installere pakkerne i dit projekt med følgende kommando<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install --save-dev babel-cli babel-core babel-preset-es2015-node5 babel-preset-stage-3 babel-register</span><br></pre></td></tr></table></figure></p>
 <p>Når pakkerne er installeret, skal vi lave nogle start-scripts. Jeg bruger to forskellige scripts. Ét til at test-køre min applikation, og ét til at pakke min færdige applikation til distribution.</p>
-<p>I <code>package.json</code> ser det således ud:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">	"dev": "babel-node app.js",</span><br><span class="line">	"build": "babel . -d .dist --ignore=\"node_modules\""</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>I <code>package.json</code> ser det således ud:<br><figure class="highlight"><table><tr><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">  "dev": "babel-node app.js",</span><br><span class="line">  "build": "babel . -d .dist --ignore=\"node_modules\""</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>Når jeg kører <code>$ npm run dev</code> bliver mine moduler transpileret on-the-fly. Det vil sige, at Node.js bruger en del resurser på at præsentere min applikation i den transpilerede udgave. Men har du en computer der bare er lidt god, så er dette ikke et problem.</p>
 <p><code>$ npm run build</code> bruger jeg, når jeg er færdig med min applikation. Denne kommando lave en nu mappe (<code>.dist</code>), som indeholder al min transpilerede kode. Det er denne mappes indhold, som jeg distribuerer.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://brianemilius.com/2018/08/10/moderne-javascript-i-dag/" data-id="cjrj4spmi000e8ojsc5ufnpty" class="article-share-link">Share</a>
+      <a data-url="https://brianemilius.com/2018/08/10/moderne-javascript-i-dag/" data-id="cjrkcing6000e95jsadcrpxox" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/babel-js/">babel.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6-modules/">es6 modules</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li></ul>
@@ -136,7 +136,7 @@
   
     <a href="/2018/05/01/target-quote-blank-quote/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">target=&amp;quot;_blank&amp;quot;</div>
+      <div class="article-nav-title">target=&#34;_blank&#34;</div>
     </a>
   
 </nav>
@@ -152,7 +152,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Accessability/">Accessability</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Guides/">Guides</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kryptografi/">Kryptografi</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Kryptografi/Block-Chain/">Block Chain</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Renere-kode/">Renere kode</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/kategorier/Accessability/">Accessability</a></li><li class="category-list-item"><a class="category-list-link" href="/kategorier/Design/">Design</a></li><li class="category-list-item"><a class="category-list-link" href="/kategorier/Guides/">Guides</a></li><li class="category-list-item"><a class="category-list-link" href="/kategorier/Kryptografi/">Kryptografi</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/kategorier/Kryptografi/Block-Chain/">Block Chain</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/kategorier/Renere-kode/">Renere kode</a></li></ul>
     </div>
   </div>
 
@@ -181,7 +181,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/arkiver/2018/08/">august 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/arkiver/2018/05/">maj 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/arkiver/2018/04/">april 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/arkiver/2018/01/">januar 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/arkiver/2017/12/">december 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/arkiver/2015/12/">december 2015</a></li></ul>
     </div>
   </div>
 
@@ -198,7 +198,7 @@
           </li>
         
           <li>
-            <a href="/2018/05/01/target-quote-blank-quote/">target=&amp;quot;_blank&amp;quot;</a>
+            <a href="/2018/05/01/target-quote-blank-quote/">target=&#34;_blank&#34;</a>
           </li>
         
           <li>
@@ -225,7 +225,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
+      &copy; 2019 Brian Emilius<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
